@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM 
+"D:/java study material/hibernate dtds/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.artek.perclass.Vehicle" table="vehicle">
+	
+		<id name="vehicleNo" column="vehicle_no">
+			<generator class="increment"></generator>
+		</id>
+		
+		<discriminator column="vdummy"></discriminator>
+		
+		<property name="weight" column="weight"></property>		
+
+		<subclass discriminator-value="car_type" name="com.artek.perclass.Car">
+			<property name="carCompany" column="car_company"></property>
+		</subclass>
+		
+		<subclass discriminator-value="bike_type" name="com.artek.perclass.Bike">
+			<property name="bikeCompany" column="bike_company"></property>
+		</subclass>
+
+	</class>
+
+</hibernate-mapping>

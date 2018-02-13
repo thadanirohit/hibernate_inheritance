@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM 
+"D:/java study material/hibernate dtds/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.artek.persubclass.Shape" table="shape">
+	
+		<id name="shapeId" column="shape_id">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="area" column="area"></property>
+		<property name="parimeter" column="parimeter"></property>		
+
+		<joined-subclass name="com.artek.persubclass.Circle">
+			<key column="shape_id"></key>
+			<property name="radius"></property>									
+		</joined-subclass>
+		
+		<joined-subclass name="com.artek.persubclass.Square">
+			<key column="shape_id"></key>
+			<property name="side"></property>	
+		</joined-subclass>
+		
+		<joined-subclass name="com.artek.persubclass.Triangle">
+			<key column="shape_id"></key>
+			<property name="base"></property>
+			<property name="altitude"></property>			
+		</joined-subclass>
+
+	</class>
+
+</hibernate-mapping>

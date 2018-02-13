@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM 
+"D:/java study material/hibernate dtds/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.artek.perconcreteclass.Employee" table="employee">
+	
+		<id name="emplId" column="empl_id">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="name" column="name"></property>			
+		
+		<union-subclass name="com.artek.perconcreteclass.Developer">
+			<!-- <key column="empl_id"></key> -->
+			<property name="developerProject"></property>			
+		</union-subclass>
+		
+		<union-subclass name="com.artek.perconcreteclass.Tester">
+			<!-- <key column="empl_id"></key> -->
+			<property name="testerProject"></property>	
+		</union-subclass>
+
+	</class>
+
+</hibernate-mapping>
